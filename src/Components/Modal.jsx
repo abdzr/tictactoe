@@ -18,7 +18,7 @@ const Modal = ({
       }`}
     >
       <div className="h-1/2 w-1/2 bg-white rounded-xl flex flex-col justify-center items-center relative dark:bg-black">
-        {count === 9 && winner === null ? (
+        {count === 9 && winner === false ? (
           <Draw />
         ) : (
           <Winner winner={winner} player={player} />

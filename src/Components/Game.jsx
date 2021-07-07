@@ -73,7 +73,7 @@ const Game = ({ playerName }) => {
 
   useEffect(() => {
     if (count === 9) {
-      setModalOpen(false);
+      setModalOpen(true);
       checkDraw();
     }
   }, [count]);
