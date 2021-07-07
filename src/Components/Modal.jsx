@@ -13,12 +13,16 @@ const Modal = ({
 }) => {
   return (
     <div
-      className={`h-screen w-screen bg-black absolute bg-opacity-60 flex justify-center items-center ${
+      className={`h-screen w-screen bg-black absolute bg-opacity-40 flex justify-center items-center dark:text-white dark:bg-white ${
         modalOpen ? "" : "hidden"
       }`}
     >
-      <div className="h-1/2 w-1/2 bg-white rounded-xl flex flex-col justify-center items-center relative">
-        {count === 9 && winner === null ? <Draw /> : <Winner winner={winner} />}
+      <div className="h-1/2 w-1/2 bg-white rounded-xl flex flex-col justify-center items-center relative dark:bg-black">
+        {count === 9 && winner === null ? (
+          <Draw />
+        ) : (
+          <Winner winner={winner} player={player} />
+        )}
         <div
           className="absolute top-4 right-5 font-bold cursor-pointer text-red-600"
           onClick={() => {
@@ -35,7 +39,7 @@ const Modal = ({
             setModalOpen(false);
             setCount(0);
           }}
-          className="mt-10 p-2 rounded-md cursor-pointer font-bold bg-black text-white transform hover:scale-105"
+          className="mt-10 p-2 rounded-md cursor-pointer font-bold bg-black text-white transform hover:scale-105 dark:bg-white dark:text-black"
         >
           Play Again
         </div>

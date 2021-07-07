@@ -5,7 +5,7 @@ const Cell = ({ value, arena, handleClick }) => {
     <div
       className={`flex border border-black w-1/3 h-1/3  justify-center items-center text-3xl font-bold bg-white cursor-pointer ${
         !arena[value] ? "hover:bg-blue-100" : ""
-      }`}
+      } dark:bg-black dark:border-white`}
       onClick={() => handleClick(value)}
     >
       {arena[value]}

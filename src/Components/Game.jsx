@@ -4,15 +4,16 @@ import Modal from "./Modal";
 import checkDiagonal from "../Utils/checkDiagonal";
 import checkHorizontal from "../Utils/checkHorizontal";
 import checkVertical from "../Utils/checkVertical";
+import ErrorPlayer from "../Components/ErrorPlayer";
 
 const Game = ({ playerName, setPlayerName }) => {
   const [player, setPlayer] = useState({
     player1: {
-      name: playerName.Player1 ? playerName.Player1 : "Player1",
+      name: (playerName || {}).Player1,
       sign: "X",
     },
     player2: {
-      name: playerName.Player2 ? playerName.Player2 : "Player2",
+      name: (playerName || {}).Player2,
       sign: "O",
     },
     state: true,
@@ -69,14 +70,18 @@ const Game = ({ playerName, setPlayerName }) => {
   useEffect(() => {
     allChecks();
   }, [arena]);
+
   useEffect(() => {
     if (count === 9) {
       setModalOpen(false);
       checkDraw();
     }
   }, [count]);
-  return (
-    <div className="flex justify-center items-center flex-col relative">
+
+  return !playerName ? (
+    <ErrorPlayer />
+  ) : (
+    <div className="flex justify-center items-center flex-col relative dark:bg-black dark:text-white">
       <Modal
         modalOpen={modalOpen}
         winner={winner}
@@ -84,7 +89,7 @@ const Game = ({ playerName, setPlayerName }) => {
         setModalOpen={setModalOpen}
         setCount={setCount}
         count={count}
-        playerName={player}
+        player={player}
       />
       <div className="flex flex-col w-screen h-screen justify-center items-center">
         <div className=" font-bold text-4xl pb-10">Tic Tac Toe</div>

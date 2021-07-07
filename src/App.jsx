@@ -4,10 +4,7 @@ import Game from "./Components/Game";
 import PlayerForm from "./Components/PlayerForm";
 
 function App() {
-  const [playerName, setPlayerName] = useState({
-    Player1: "",
-    Player2: "",
-  });
+  const [playerName, setPlayerName] = useState(null);
   return (
     <Router>
       <Switch>
