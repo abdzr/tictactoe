@@ -6,7 +6,7 @@ import checkHorizontal from "../Utils/checkHorizontal";
 import checkVertical from "../Utils/checkVertical";
 import ErrorPlayer from "../Components/ErrorPlayer";
 
-const Game = ({ playerName, setPlayerName }) => {
+const Game = ({ playerName }) => {
   const [player, setPlayer] = useState({
     player1: {
       name: (playerName || {}).Player1,
